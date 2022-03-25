@@ -1,0 +1,27 @@
+#Get Ip information with formatted output
+docker container inspect -f '{{.NetworkSettings.IPAddress}}' CONTAINER_NAME
+
+#List all networks running
+docker network ls
+
+#Filter all bridger network
+docker network ls -f driver=bridge
+
+#Find All network ids and drivers
+docker network ls --format "{{.ID}}:{{.Driver}}"
+
+#Returns information about the network
+docker network inspect NETWORK_ID
+
+#Create a network on host machine (by default the network driver is bridge)
+docker network create NETWORK_NAME
+
+#Create a container connecting to a specific network created previously
+docker container run -d --name myNginx --network mynetwork nginx
+
+#Connect an existing container to a network
+docker network connect NETWORK_NAME CONTAINER_NAME
+
+#Diconnect a container from a network
+docker network disconnect NETWORK_NAME CONTAINER_NAME
+
