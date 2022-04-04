@@ -1,11 +1,28 @@
 #Create a nginx server running on port 80.
 docker container run -d -p 80:80 --name AssignmentNginx nginx
+
 #Create an Apache server running on port 8080.
 docker container run -d -p 8080:80 --name AssignmentApache httpd:2.4
-#Create a Mysqel server running on port 3306 generating a random password.
+
+#Create a Mysql server running on port 3306 generating a random password.
 docker container run -d -p 3306:3306 --env MYSQL_RANDOM_ROOT_PASSWORD=yes --name AssignmentMysql mysql
-#Check the password on mysql cointainer.
-docker cointainer logs containerID( or ContainerName )
+
+#Check the password on mysql container.
+docker container logs containerID( or ContainerName )
+
 #Stop and delete all containers which have been created.
 docker stop AssignmentMysql AssignmentApache AssignmentNginx
 docker container rm AssignmentMysql AssignmentApache AssignmentNginx
+
+#Download an image but not start it
+docker pull nginx or docker pull nginx:VersionXXXX
+
+#History shows how and when the image was created
+docker history image
+
+#Create a copy of an image with a name specified by the user
+docker image tag IMAGE_NAME:TAG DOCKERHUB_USERNAME/NAME_OF_IMAGE:TAG((in general the version but you can insert a name, if it is not specified the tag will be latest))
+
+#Upload customized images to docker hub
+docker login
+docker image push USER/Image-name
