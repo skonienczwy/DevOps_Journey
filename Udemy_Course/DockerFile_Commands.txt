@@ -1,0 +1,29 @@
+#Creating an image 
+docker build -f path_of_dockerfile
+
+
+#Docker instructions
+FROM - Must be the first non-comment instruction in the Dockerfile.
+MAINTAINER - Instruction allows you to set the Author field of the generated images.
+LABEL - Help organize your Docker Images, It adds metadata to an image.
+RUN - Execute commands in the current image
+CMD - Sets default command and/or parameters, which can be overwritten from command line when docker container runs. (only ONE CMD is allowed in a dockerfile).
+EXPOSE - Instruction indicates the ports on which a container listens for connections.
+ENV - Sets the environment variable.
+ADD - Copies new files, directories or remote file urls from <src> and adds them to the filesystem of the image at the path <dest>.
+VOLUME - Expose any database storage area, configuration storage, or files/folder created by your docker container.
+WORKDIR - Sets the working directory.
+
+
+
+
+e.g.: 
+
+FROM ubuntu:14.04
+LABEL "My first dockerfile"
+LABEL "Yes Baby"
+RUN apt-get update
+RUN apt-get install -y curl
+ADD hom* /myLocalDirectoy/ #adds all files starting with "hom"
+
+
